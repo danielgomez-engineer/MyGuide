@@ -1,0 +1,244 @@
+/* styles.css */
+
+/* -------------- Variables de color ------------------ */
+:root {
+    --color-primary: #4F46E5;
+    --color-success: #22C55E;
+    --color-warning: #FACC15;
+    --color-error: #F43F5E;
+    --color-bg: #F8FAFC;
+    --color-text: #1E293B;
+    --color-light: #FFFFFF;
+    --color-muted: #94A3B8;
+    --color-border: #E2E8F0;
+}
+
+/* ---------------- Reset & base ---------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* ---------------- Layout general ------------------- */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem 1.5rem;
+}
+
+header, footer {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    padding: 1rem 2rem;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: var(--color-success);
+    text-decoration: underline;
+}
+
+/* ---------------- Navegación ------------------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--color-light);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.navbar a {
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+.navbar a:hover {
+    color: var(--color-primary);
+}
+
+/* ---------------- Encabezados ------------------- */
+h1, h2, h3, h4 {
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+/* ---------------- Botones ------------------- */
+button, .btn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover, .btn:hover {
+    background-color: #4338CA;
+}
+
+.btn-success {
+    background-color: var(--color-success);
+}
+
+.btn-warning {
+    background-color: var(--color-warning);
+    color: black;
+}
+
+.btn-danger {
+    background-color: var(--color-error);
+}
+
+/* ---------------- Formularios ------------------- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.4rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    background-color: white;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* ---------------- Cards / bloques ------------------- */
+.card {
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* ---------------- Responsive ------------------- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar a {
+        margin: 0.5rem 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* ---------------- Otros ------------------- */
+.code-block {
+    background: #F1F5F9;
+    font-family: 'Fira Code', monospace;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    color: #334155;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* --------- Tablas ----------- */
+.table-container {
+    overflow-x: auto;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+}
+
+.styled-table th {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+/* --------- Formulario ----------- */
+.form-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.form-error {
+    color: var(--color-error);
+    font-size: 0.875rem;
+    margin-top: 0.3rem;
+}
+
+/* --------- Botones pequeños ----------- */
+.btn-small {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+}
+
+/* --------- Textos destacados ----------- */
+.highlight {
+    color: var(--color-primary);
+    font-weight: 700;
+}

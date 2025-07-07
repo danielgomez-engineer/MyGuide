@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+  <section class="card">
+    <h2>Editar Tema</h2>
+
+    <form th:action="@{/topics}" th:object="${topic}" method="post">
+      <input type="hidden" th:field="*{id}" />
+
+      <div>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="form-error"></div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Actualizar</button>
+        <a th:href="@{/topics}" class="btn btn-warning">Cancelar</a>
+      </div>
+    </form>
+  </section>
+</div>
+</html>

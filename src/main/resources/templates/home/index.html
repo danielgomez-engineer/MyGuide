@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <section class="card">
+        <h2>Bienvenido a <span class="highlight">MyGuide</span></h2>
+        <p>
+            Esta es una guía interactiva para organizar <strong>temas, subtemas</strong> y <strong>contenidos</strong>
+            de programación de forma estructurada y progresiva.
+        </p>
+        <br/>
+        <a th:href="@{/topics}" class="btn">Explorar Temas</a>
+    </section>
+</div>
+</html>

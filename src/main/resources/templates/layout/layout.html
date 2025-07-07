@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>MyGuide</title>
+  <link rel="stylesheet" th:href="@{/styles.css}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div th:replace="layout/fragments/header :: header"></div>
+
+<main class="container" layout:fragment="content">
+  <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+  <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+</main>
+
+<div th:replace="layout/fragments/footer :: footer"></div>
+</body>
+</html>

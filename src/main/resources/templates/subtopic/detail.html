@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <section class="card">
+        <h2 th:text="'Detalles del Subtema: ' + ${subtopic.name}"></h2>
+
+        <p><strong>ID:</strong> <span th:text="${subtopic.id}"></span></p>
+        <p><strong>Nombre:</strong> <span th:text="${subtopic.name}"></span></p>
+        <p><strong>Fecha de Creación:</strong> <span th:text="${#temporals.format(subtopic.date, 'dd/MM/yyyy HH:mm')}"></span></p>
+
+        <h3>Contenidos</h3>
+
+        <div th:if="${contents.isEmpty()}">
+            <p>No hay contenidos asociados.</p>
+        </div>
+
+        <<div th:each="con : ${contents}" class="card content">
+        <h4 th:text="'Contenido: ' + ${con.title}"></h4>
+        <p th:text="${con.text}"></p>
+
+        <p>
+            <strong>Fecha:</strong>
+            <span th:text="${#temporals.format(con.date, 'dd/MM/yyyy HH:mm')}"></span>
+        </p>
+        <br/>
+        <p>
+            <a th:if="${con.urlVideo != null}" th:href="${con.urlVideo}"
+               class="btn btn-link" target="_blank" rel="noopener noreferrer">
+                🎥 Ver en YouTube
+            </a>
+        </p>
+    </div>
+
+
+        <a th:href="@{/subtopics}" class="btn">← Volver</a>
+    </section>
+</div>
+</html>

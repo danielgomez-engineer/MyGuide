@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <section class="card">
+        <h2 th:text="'Detalles del Tema: ' + ${topic.name}"></h2>
+
+        <p><strong>ID:</strong> <span th:text="${topic.id}"></span></p>
+        <p><strong>Nombre:</strong> <span th:text="${topic.name}"></span></p>
+
+        <h3>Subtemas</h3>
+
+        <div th:if="${subtopics.isEmpty()}">
+            <p>No hay subtemas asociados.</p>
+        </div>
+
+        <div th:each="sub : ${subtopics}" class="card subtopic">
+            <h4 th:text="'Subtema: ' + ${sub.name}"></h4>
+            <p>
+                <strong>Fecha:</strong>
+                <span th:text="${#temporals.format(sub.date, 'dd/MM/yyyy HH:mm')}"></span>
+            </p>
+
+            <div th:if="${sub.contents != null and !sub.contents.isEmpty()}">
+                <h5>Contenidos:</h5>
+                <ul>
+                    <li th:each="content : ${sub.contents}">
+                        <strong th:text="${content.title}"></strong> –
+                        <span th:text="${#temporals.format(content.date, 'dd/MM/yyyy HH:mm')}"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div th:if="${sub.contents == null or sub.contents.isEmpty()}">
+                <p>No hay contenidos asociados a este subtema.</p>
+            </div>
+        </div>
+
+        <a th:href="@{/topics}" class="btn">← Volver</a>
+    </section>
+</div>
+</html>

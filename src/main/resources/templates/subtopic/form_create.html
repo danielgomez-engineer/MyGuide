@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <section class="card">
+        <h2>Crear nuevo Subtema</h2>
+
+        <form th:action="@{/subtopics}" th:object="${subtopic}" method="post">
+            <div>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" th:field="*{name}" required />
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="form-error"></div>
+            </div>
+
+            <div>
+                <label for="topicId">Seleccionar Tema:</label>
+                <select id="topicId" th:field="*{topicId}" required>
+                    <option value="" disabled selected>-- Selecciona un tema --</option>
+                    <option th:each="topic : ${topics}"
+                            th:value="${topic.id}"
+                            th:text="${topic.name}"></option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success">Crear Subtema</button>
+                <a th:href="@{/subtopics}" class="btn btn-warning">Cancelar</a>
+            </div>
+        </form>
+    </section>
+</div>
+</html>

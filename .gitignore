@@ -1,0 +1,39 @@
+# Directorios de construcción
+/target/
+/build/
+
+# Archivos del IDE (Eclipse, IntelliJ, VSCode, etc.)
+*.iml
+.idea/
+*.log
+*.ipr
+*.iws
+.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración personales
+*.env
+.env*
+
+# Archivos generados por Maven
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Base de datos local o archivos sensibles
+*.h2.db
+*.mv.db
+*.sqlite
+
+# Credenciales y configuraciones locales
+application.properties
+application.yml
+
+# Logs
+logs/
+*.log
+
+# Otros
+*.class

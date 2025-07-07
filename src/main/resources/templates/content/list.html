@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <section class="card">
+        <h2>Lista de Contenidos</h2>
+
+        <a th:href="@{/contents/new}" class="btn btn-success">+ Crear nuevo Contenido</a>
+
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Video</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="co : ${content}">
+                    <td th:text="${co.id}"></td>
+                    <td th:text="${co.title}"></td>
+                    <td th:text="${co.text}"></td>
+                    <td th:text="${#temporals.format(co.date, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td>
+                        <a th:href="${co.urlVideo}" target="_blank" class="btn btn-link">Ver video</a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/contents/' + ${co.id}}" class="btn btn-small">Ver</a>
+                        <a th:href="@{'/contents/edit/' + ${co.id}}" class="btn btn-warning btn-small">Editar</a>
+                        <form th:action="@{'/contents/delete/' + ${co.id}}" method="post"
+                              onsubmit="return confirm('¿Estás seguro de que quieres eliminar este Contenido?');"
+                              style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-small">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+</html>

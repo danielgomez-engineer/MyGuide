@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<div layout:fragment="content">
+    <section class="card">
+        <h2>Lista de Subtemas</h2>
+
+        <a th:href="@{/subtopics/new}" class="btn btn-success">+ Crear nuevo Subtema</a>
+
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha de Creación</th>
+                    <th>Opciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="subtopic : ${subtopics}">
+                    <td th:text="${subtopic.id}"></td>
+                    <td th:text="${subtopic.name}"></td>
+                    <td th:text="${#temporals.format(subtopic.date, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td>
+                        <a th:href="@{'/subtopics/' + ${subtopic.id}}" class="btn btn-small">Ver</a>
+                        <a th:href="@{'/subtopics/edit/' + ${subtopic.id}}" class="btn btn-warning btn-small">Editar</a>
+                        <form th:action="@{'/subtopics/delete/' + ${subtopic.id}}" method="post"
+                              onsubmit="return confirm('¿Estás seguro de que quieres eliminar este Subtema?');"
+                              style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-small">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+</html>
